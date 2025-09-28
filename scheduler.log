@@ -1,0 +1,104 @@
+2025-09-28 07:37:34,426 - INFO - Starting scheduler - will run every 60 seconds
+2025-09-28 07:37:34,427 - INFO - Starting scheduled scrape...
+2025-09-28 07:37:35,057 - ERROR - Error during scheduled scrape: Browser.new_context: Target page, context or browser has been closed
+Traceback (most recent call last):
+  File "/home/rober/AnyGivenSunday/scheduler.py", line 22, in run_scraper
+    await scrape_main()
+  File "/home/rober/AnyGivenSunday/scraper.py", line 18, in main
+    context = await browser.new_context(storage_state=AUTH_STATE_FILE)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rober/AnyGivenSunday/.venv/lib/python3.11/site-packages/playwright/async_api/_generated.py", line 13938, in new_context
+    await self._impl_obj.new_context(
+  File "/home/rober/AnyGivenSunday/.venv/lib/python3.11/site-packages/playwright/_impl/_browser.py", line 171, in new_context
+    channel = await self._channel.send("newContext", None, params)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rober/AnyGivenSunday/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rober/AnyGivenSunday/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 558, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Browser.new_context: Target page, context or browser has been closed
+2025-09-28 07:37:35,058 - INFO - Waiting 60 seconds until next scrape...
+2025-09-28 07:38:38,421 - INFO - Starting scheduled scrape...
+2025-09-28 07:38:39,142 - ERROR - Error during scheduled scrape: Browser.new_context: Target page, context or browser has been closed
+Traceback (most recent call last):
+  File "/home/rober/AnyGivenSunday/scheduler.py", line 22, in run_scraper
+    await scrape_standings()
+    ^^^^^^^^^^^^^^^^^^^
+  File "/home/rober/AnyGivenSunday/scraper.py", line 18, in main
+    print("Authentication state found, loading from file.")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rober/AnyGivenSunday/.venv/lib/python3.11/site-packages/playwright/async_api/_generated.py", line 13938, in new_context
+    await self._impl_obj.new_context(
+  File "/home/rober/AnyGivenSunday/.venv/lib/python3.11/site-packages/playwright/_impl/_browser.py", line 171, in new_context
+    channel = await self._channel.send("newContext", None, params)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rober/AnyGivenSunday/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rober/AnyGivenSunday/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 558, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Browser.new_context: Target page, context or browser has been closed
+2025-09-28 07:38:39,142 - INFO - Waiting 60 seconds until next scrape...
+2025-09-28 07:39:42,096 - INFO - Scheduler stopped by user
+2025-09-28 07:39:43,416 - INFO - Starting scheduler - will run every 60 seconds
+2025-09-28 07:39:43,416 - INFO - Starting scheduled scrape...
+2025-09-28 07:40:01,967 - INFO - Scheduled scrape completed successfully
+2025-09-28 07:40:01,967 - INFO - Waiting 60 seconds until next scrape...
+2025-09-28 07:41:05,268 - INFO - Starting scheduled scrape...
+2025-09-28 07:41:33,424 - INFO - Scheduled scrape completed successfully
+2025-09-28 07:41:33,425 - INFO - Waiting 60 seconds until next scrape...
+2025-09-28 07:41:40,445 - INFO - Scheduler stopped by user
+2025-09-28 07:43:07,595 - INFO - Starting scheduler - will run every 60 seconds
+2025-09-28 07:43:07,595 - INFO - Initializing browser and logging in...
+2025-09-28 07:43:24,644 - INFO - Browser initialized successfully. Starting periodic scraping...
+2025-09-28 07:43:24,645 - INFO - Starting scheduled scrape...
+2025-09-28 07:43:38,064 - INFO - Scheduled scrape completed successfully
+2025-09-28 07:43:38,065 - INFO - Waiting 45 seconds until next scrape...
+2025-09-28 07:44:24,706 - INFO - Refreshing page 15 seconds before next scrape...
+2025-09-28 07:44:40,314 - INFO - Starting scheduled scrape...
+2025-09-28 07:44:53,383 - INFO - Scheduled scrape completed successfully
+2025-09-28 07:44:53,383 - INFO - Waiting 45 seconds until next scrape...
+2025-09-28 07:45:39,992 - INFO - Refreshing page 15 seconds before next scrape...
+2025-09-28 07:45:57,148 - INFO - Starting scheduled scrape...
+2025-09-28 07:46:08,873 - INFO - Scheduled scrape completed successfully
+2025-09-28 07:46:08,873 - INFO - Waiting 45 seconds until next scrape...
+2025-09-28 07:46:55,464 - INFO - Refreshing page 15 seconds before next scrape...
+2025-09-28 07:47:13,404 - INFO - Starting scheduled scrape...
+2025-09-28 07:47:25,892 - INFO - Scheduled scrape completed successfully
+2025-09-28 07:47:25,892 - INFO - Waiting 45 seconds until next scrape...
+2025-09-28 07:48:14,218 - INFO - Refreshing page 15 seconds before next scrape...
+2025-09-28 07:48:30,575 - INFO - Starting scheduled scrape...
+2025-09-28 07:48:38,042 - ERROR - Fatal error in scheduler: Browser.close: Connection closed while reading from the driver
+Traceback (most recent call last):
+  File "/home/rober/AnyGivenSunday/scheduler.py", line 63, in <module>
+    asyncio.run(scheduler())
+  File "/home/rober/.local/share/uv/python/cpython-3.11.13-linux-x86_64-gnu/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/home/rober/.local/share/uv/python/cpython-3.11.13-linux-x86_64-gnu/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rober/.local/share/uv/python/cpython-3.11.13-linux-x86_64-gnu/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/rober/AnyGivenSunday/scheduler.py", line 58, in scheduler
+    await scraper.close()
+  File "/home/rober/AnyGivenSunday/scraper.py", line 132, in close
+    await self.browser.close()
+  File "/home/rober/AnyGivenSunday/.venv/lib/python3.11/site-packages/playwright/async_api/_generated.py", line 14234, in close
+    return mapping.from_maybe_impl(await self._impl_obj.close(reason=reason))
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rober/AnyGivenSunday/.venv/lib/python3.11/site-packages/playwright/_impl/_browser.py", line 241, in close
+    raise e
+  File "/home/rober/AnyGivenSunday/.venv/lib/python3.11/site-packages/playwright/_impl/_browser.py", line 238, in close
+    await self._channel.send("close", None, {"reason": reason})
+  File "/home/rober/AnyGivenSunday/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rober/AnyGivenSunday/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 558, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+Exception: Browser.close: Connection closed while reading from the driver
+2025-09-28 07:48:38,075 - ERROR - Future exception was never retrieved
+future: <Future finished exception=TargetClosedError('Target page, context or browser has been closed')>
+playwright._impl._errors.TargetClosedError: Target page, context or browser has been closed

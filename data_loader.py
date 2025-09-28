@@ -41,6 +41,12 @@ def load_standings_file(file_path):
     
     df = pd.DataFrame(data, columns=header)
     
+    # Convert numeric columns to proper types
+    numeric_columns = ['Rank', 'FPTS', 'PMR']
+    for col in numeric_columns:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors='coerce')
+    
     player_columns = ['QB', 'RB1', 'RB2', 'WR1', 'WR2', 'WR3', 'TE', 'FLEX', 'DST']
     
     for col in player_columns:
@@ -65,16 +71,32 @@ def load_standings_file(file_path):
 def load_standings_directory(directory_path):
     """
     Loads standings data from all CSV files in a directory.
+    Supports both mock data (example_standings_*) and real data (standings_*).
     """
     all_data = []
     for filename in os.listdir(directory_path):
-        if filename.endswith('.csv') and filename.startswith('example_standings_'):
+        if filename.endswith('.csv'):
             file_path = os.path.join(directory_path, filename)
             
             # Extract timeindex from filename
-            try:
-                timeindex = int(filename.split('_')[-1].split('.')[0])
-            except (IndexError, ValueError):
+            timeindex = None
+            if filename.startswith('example_standings_'):
+                # Mock data format: example_standings_0.csv
+                try:
+                    timeindex = int(filename.split('_')[-1].split('.')[0])
+                except (IndexError, ValueError):
+                    continue
+            elif filename.startswith('standings_'):
+                # Real data format: standings_20250128_143022.csv
+                try:
+                    # Extract timestamp and convert to timeindex (minutes since epoch)
+                    timestamp_str = filename.replace('standings_', '').replace('.csv', '')
+                    from datetime import datetime
+                    dt = datetime.strptime(timestamp_str, '%Y%m%d_%H%M%S')
+                    timeindex = int(dt.timestamp() / 60)  # Convert to minutes since epoch
+                except (IndexError, ValueError):
+                    continue
+            else:
                 continue
                 
             df = load_standings_file(file_path)

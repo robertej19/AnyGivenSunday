@@ -26,8 +26,12 @@ def dfs_win_probs(df, sigma2=0.5, sims=20000, random_state=None):
     """
     rng = np.random.default_rng(random_state)
     
-    mu = df["FPTS"].values + df["PMR"].values / 4.0
-    var = sigma2 * df["PMR"].values
+    # Ensure numeric types and handle any conversion issues
+    fpts = pd.to_numeric(df["FPTS"], errors='coerce').fillna(0).values
+    pmr = pd.to_numeric(df["PMR"], errors='coerce').fillna(0).values
+    
+    mu = fpts + pmr / 4.0
+    var = sigma2 * pmr
     std = np.sqrt(var)
     
     n_teams = len(df)
