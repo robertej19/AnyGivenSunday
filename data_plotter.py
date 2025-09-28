@@ -26,8 +26,8 @@ def plot_standings(df):
     plot_df = plot_df.drop_duplicates(subset=['Team Name', 'timeindex'], keep='first')
     
     # Convert timeindex to readable time format
-    # timeindex is minutes since epoch, convert to datetime
-    plot_df['time_dt'] = pd.to_datetime(plot_df['timeindex'] * 60, unit='s')
+    # timeindex is minutes since epoch, convert to datetime and adjust for EST (UTC-4)
+    plot_df['time_dt'] = pd.to_datetime(plot_df['timeindex'] * 60, unit='s') - pd.Timedelta(hours=4)
     plot_df['time_str'] = plot_df['time_dt'].dt.strftime('%H:%M')
     
     # Create a time axis that preserves proportional spacing
